@@ -1,0 +1,14 @@
+news_front/node_modules/
+news_server/node_modules/
+news_front/dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
