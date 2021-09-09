@@ -74,9 +74,7 @@ export default {
       });
 
       this.pcAndMobile = navigator.userAgent.toLowerCase().indexOf('mobile') > -1 ? 'mobile' : 'pc';
-      if(location.host.indexOf('opgirls.cn') > -1) this.recordText = '京ICP备17002791号-1';
-      if(location.host.indexOf('opfed.com') > -1) this.recordText = '京ICP备11023770号-10';
-      if(location.host.indexOf('coomanga.com') > -1) this.recordText = '京ICP备17012531号-3';
+      if(location.host.indexOf('fonews.cn') > -1) this.recordText = '京ICP备20015773号-2';
     },
     methods: {
       closePopAd() {

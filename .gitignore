@@ -1,6 +1,8 @@
 news_web/node_modules/
 news_server/node_modules/
+reptile/node_modules/
 news_web/dist/
+news_web/static/upLoadImg/*
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
