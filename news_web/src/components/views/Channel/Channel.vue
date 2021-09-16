@@ -1,7 +1,6 @@
 <template>
 	<div class="channel_container">
-		<xi-guang-nav-view v-if="newsApiUpstream == 'xiguang'"></xi-guang-nav-view>
-		<nav-view v-else></nav-view>
+		<nav-view></nav-view>
 		<div v-if="ads.switchChannelPop && ads.switchChannelPop.id && isGDTcp">
 			<ads-block :aid="ads.switchChannelPop.id" :adsType="'switchChannelPop'" :immediate="true"></ads-block>
 		</div>
@@ -16,7 +15,6 @@
 				</template>
 			</div>
 			<template v-for="(item, index) in lists">
-				<xi-guang-channel-item v-if="!item.slot && newsApiUpstream == 'xiguang'" :item="item"></xi-guang-channel-item>
 				<channel-item v-if="!item.slot && (newsApiUpstream == 'oupeng' || newsApiUpstream == '')" :item="item" :index="index"></channel-item>
 				<div class="list-center-ad adColor" v-if="item.slot">
 					<ads-block v-if="item.slot" :adsType="item.pos" :aid="item.slot" :clickCount="item.clickCount" :active="active"></ads-block>
@@ -37,8 +35,6 @@
 <script>
 import { mapState } from 'vuex';
 import NavView from '@/components/modules/Nav.vue';
-import xiGuangNavView from '@/components/modules/xiGuang/Nav.vue';
-import xiGuangChannelItem from '@/components/modules/xiGuang/ChannelItem.vue';
 import AdsBlock from '@/components/ads/AdsBlock.vue';
 import ChannelItem from '@/components/views/Channel/ChannelItem.vue';
 import storage from '@/utils/storage.js';
@@ -50,8 +46,6 @@ export default {
 		NavView,
 		AdsBlock,
 		ChannelItem,
-		xiGuangNavView,
-		xiGuangChannelItem,
 		TaskView,
 	},
 	data() {
@@ -129,8 +123,7 @@ export default {
 	methods: {
 		loadItems() {
 			this.loading =  true;
-			if(this.newsApiUpstream == 'xiguang') this.getXiGuangItem();
-			else this.getItem();
+			this.getItem();
 		},
 		getItem() {
 			let params = {
@@ -139,22 +132,6 @@ export default {
 				page: this.page
 			};
 			this.$store.dispatch('fetch', params).then((data) => {
-				// this.loading = data.length == 0 ? true : false;
-				if(data.length == 0 ) {
-					this.loadOrerror = '暂无更多数据';
-					this.loading = true;
-				} else {
-					this.loading = false;
-					this.loadOrerror = '加载中...';
-				}
-            });
-		},
-		getXiGuangItem() {
-			let params = {
-				name: this.cid,
-				page: this.page
-			};
-			this.$store.dispatch('xiGuangFetch', params).then((data) => {
 				// this.loading = data.length == 0 ? true : false;
 				if(data.length == 0 ) {
 					this.loadOrerror = '暂无更多数据';

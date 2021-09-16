@@ -9,6 +9,8 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var listRouter = require('./routes/list');
 var detailRouter = require('./routes/detail');
+var addDistributor = require('./routes/newsback/createDistributor');
+var getDistributor = require('./routes/newsback/getDistributor');
 var app = express();
 
 // 配置全局变量 app.js作用域下所有文件都可以访问common中的db和RunSQL
@@ -30,6 +32,8 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/api/list', listRouter);
 app.use('/api/detail', detailRouter);
+app.use('/api/back/addDistributor', addDistributor);
+app.use('/api/back/getDistributor', getDistributor);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

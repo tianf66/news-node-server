@@ -79,7 +79,7 @@ window.OUPENGLOGGER = function(p = {}, callback) {
         }
         /*   --const 1187289889406447616-- end */
 
-        // sendLogger(params, callback);
+        sendLogger(params, callback);
     } catch(e) {
         console.log(e);
     }

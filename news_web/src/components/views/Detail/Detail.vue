@@ -84,8 +84,6 @@
 		<!-- 详情页翻页下广告 end -->
 
 		<!-- 详情页推荐 start -->
-		<x-detail-relate v-if="isRecommend == 'xiguang'"></x-detail-relate>
-		<f-detail-relate v-if="isRecommend == 'disifanshi'"></f-detail-relate>
 		<detail-relate v-if="isRecommend == 'oupeng' || isRecommend == ''" :siteType="detail.siteType"></detail-relate>
 		<!-- 详情页推荐end -->
 
@@ -102,10 +100,6 @@
 		<!-- 微信分享title -->
 		<div v-wechat-title="detail.title" img-set="detail.imgList[0]"></div>
 
-		<!-- 范式文字链广告 start -->
-		<ads-fan-shi-text v-if="ads.detailFanshiWenzilian && ads.detailFanshiWenzilian.id" :aid="ads.detailFanshiWenzilian.id"></ads-fan-shi-text>
-		<!-- 范式文字链广告 end -->
-
 		<div class="const-time" v-if="timeCountModel">浏览点击感兴趣的新闻广告{{constTimeCount}}</div>
 	</div>
 </template>
@@ -115,14 +109,10 @@ import DetailHeader from '@/components/views/Detail/Header.vue';
 import DetailConent from '@/components/views/Detail/Content.vue';
 import DetailImageContent from '@/components/views/Detail/ImageContent.vue';
 import DetailRelate from '@/components/views/Detail/NewsRelate.vue';
-import xDetailContent from '@/components/modules/xiGuang/DetailContent.vue';
-import xDetailRelate from '@/components/modules/xiGuang/DetailRelate.vue';
-import fDetailRelate from '@/components/modules/fanShi/DetailRelate.vue';
 import AdsBlock from '@/components/ads/AdsBlock.vue';
 import AdsFlot from '@/components/ads/item/AdsFlot.vue';
 import storage from '@/utils/storage.js';
 import TaskView from '@/components/modules/Task.vue';
-import AdsFanShiText from '@/components/ads/item/AdsFanShiText.vue';
 
 export default {
 	name: 'detail',
@@ -133,11 +123,7 @@ export default {
 		DetailRelate,
 		AdsBlock,
 		AdsFlot,
-		xDetailContent,
-		xDetailRelate,
-		fDetailRelate,
-		TaskView,
-		AdsFanShiText
+		TaskView
 	},
 	data() {
 		return {

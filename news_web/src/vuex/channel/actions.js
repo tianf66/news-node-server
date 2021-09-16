@@ -1,12 +1,12 @@
 import dataCenter from '@/store/index.js';
 import utils from '@/utils/index.js';
 
-let ads = window.config.adList;
+let ads = window.config && window.config.adList || null;
 let listCount = 0, adIntervalIndex = 0, middleIntervalIndex = 0, isListStartSlot = true, flag = true;
-let listStartAdId = ads.listStart && ads.listStart.id ? ads.listStart.id.split(',') : null;
+let listStartAdId = ads && ads.listStart && ads.listStart.id ? ads.listStart.id.split(',') : null;
 let listStartAdInterval = listStartAdId && ads.listStart.interval ? ads.listStart.interval.split(',') : null;
 let listStartAdClickCount = listStartAdId && ads.listStart.adClickTime ? ads.listStart.adClickTime.split(',') : 0;
-let listMiddleAdId = ads.listMiddle && ads.listMiddle.id ? ads.listMiddle.id.split(',') : null;
+let listMiddleAdId = ads && ads.listMiddle && ads.listMiddle.id ? ads.listMiddle.id.split(',') : null;
 let listMiddleAdInterval = listMiddleAdId && ads.listMiddle.interval ? ads.listMiddle.interval.split(',') : null;
 let listMiddleAdClick = listMiddleAdId && ads.listMiddle.adClickTime ? ads.listMiddle.adClickTime.split(',') : 0;
 

@@ -8,7 +8,7 @@
     <div class="ad-mask" ref="clkMask" v-show="adMask"></div>
 
     <!-- 广告概率禁止点击蒙层 -->
-    <div @click="adMaskClick" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 9999" v-if="showMask"></div>
+    <div style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 9999" v-if="showMask"></div>
 
     <!-- 广告下线刷新蒙层 -->
     <div style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 99999" v-show="adDownStatusMask" ref="adDownMask"></div>
@@ -66,7 +66,7 @@ export default {
 
                 let storagePos = storage.get(`${this.adsType}_${this.ads.slot}_${this.did}`) || null;
                 let adClkNum = storagePos ? JSON.parse(storagePos.data) : 0;
-                let loadFlag = storage.setAdClk(`${this.adsType}_${this.ads.slot}_${this.did}`, adClkNum += 1, parseInt(this.clickCount));
+                let loadFlag = storage.setAdClk(`${this.adsType}_${this.ads.slot}_${this.did}`, adClkNum += 1, parseInt(this.clickCount), this.prohibitTime);
                 if(loadFlag == 'reload') {
                     return location.reload();
                 }
@@ -84,8 +84,8 @@ export default {
                 if(this.ads.clk_track) {
                     imgTrack(this.ads.clk_track);
                 }
-
-                this.adMask = false;
+                this.adMask = this.getAdsMask();;
+                
                 setTimeout(() => {
                     this.adMask = true;
                 }, 350);
@@ -115,7 +115,7 @@ export default {
         },
         adMaskShow(val) {
             if(this.showMask && val) {
-                dataCenter.adLayerShow(this.did, this.adsType);
+                // dataCenter.adLayerShow(this.did, this.adsType);
             }
         }
     },
@@ -124,13 +124,26 @@ export default {
             return utils.getDID();
         },
         showChance() {
-            return config.adList[this.adsType].adlayerProbability || 0;
+            //先找到广告位ID的索引，对应就是广告位蒙层概率索引;
+            let slotId = this.ads.slot,
+                slotInfo = config.adList[this.adsType],
+                adlayerProbability = slotInfo.adlayerProbabilitys.split(","),
+                slotIdIndex = slotInfo.id.split(",").indexOf(slotId.toString()),
+                probability = adlayerProbability[slotIdIndex];
+                console.log(probability)
+            return parseInt(probability) || 0;
+        },
+        prohibitTime() {
+            let slotId = this.ads.slot,
+                slotInfo = config.adList[this.adsType],
+                prohibitTime = slotInfo.prohibitTime.split(","),
+                slotIdIndex = slotInfo.id.split(",").indexOf(slotId.toString()),
+                time = prohibitTime[slotIdIndex];
+                console.log(time);
+            return parseInt(time) || 1440;
         }
     },
     methods: {
-        adMaskClick() {
-            dataCenter.adLayerClick(this.did, this.adsType);
-        },
         setAdMask() {
             if(this.clickCount && parseInt(this.clickCount) > 0) {
                 this.adMask = true;
@@ -204,7 +217,8 @@ export default {
                 // this.adMask = true;
                 this.setAdMask();
                 this.setAdDownStatusMask();
-                this.showMask = this.showChance && Math.ceil(Math.random() * 100) < this.showChance;
+                this.getAdsMask();
+                if(!this.clickCount) this.showMask = this.showChance && Math.ceil(Math.random() * 100) < this.showChance;
                 let jsSrc = html.match(/src\s*=\s*"((http(s)?:)?\/\/.*\.js)"/)[1];
                 let id = html.match(/id\s*:\s"(.*)"\s*/)[1];
                 let s = "_" + Math.random().toString(36).slice(2);
@@ -570,9 +584,10 @@ export default {
                 this.bdUnionAd = true;
                 // this.adMask = true;
                 this.setAdMask();
+                this.getAdsMask();
+                if(!this.clickCount) this.showMask = this.showChance && Math.ceil(Math.random() * 100) < this.showChance;
                 let srcJs = html.match(/src\s*=\s*"(.*.js)"/)[1];
                 let smua = html.match(/smua=\s*"((\w*=*&*:*)*)/)[1];
-                this.showMask = this.showChance && Math.ceil(Math.random() * 100) < this.showChance;
                 this.$nextTick(() => {
                     let container = document.getElementById(this.bdUnionId);
                     let script = document.createElement('script');
@@ -852,6 +867,21 @@ export default {
                 return;
             }
 
+            if(ads.subtype == 36) {//神马热词
+                this.bdUnionId = `unBodyTop_${utils.getUid()}`;
+                this.bdUnionAd = true;
+                this.styleObj.width = '100%';
+                this.styleObj.height = 'auto';
+                this.$nextTick(() => {
+                    // let src = html.match(/src\s*=\s*"(.*.js)"/)[1];
+                    let src = "http://172.16.11.117:8000/sm_hot_word.js";
+                    utils.loadScript(src, false, () => {
+                        window.OUPENGSMHOTWORD.RequestAjax(this.bdUnionId);
+                    });
+                });
+                return;
+            }
+
 
             if(utils.isURL(html)) {
                 this.iframeSrc = html;
@@ -939,6 +969,17 @@ export default {
                     }
                 }
             });
+        },
+        getAdsMask() {
+            let flag = false;
+            if(this.clickCount && this.showChance) {
+                let adInfo = storage.get(`${this.adsType}_${this.ads.slot}_${this.did}`),
+                    count = adInfo && adInfo.data;
+                if(count === parseInt(this.clickCount)) {
+                    flag = this.showChance && Math.ceil(Math.random() * 100) < this.showChance;
+                }
+            }
+            return flag;
         }
     }
 };

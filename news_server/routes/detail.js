@@ -38,7 +38,6 @@ router.get('/', function(req, res, next) {
             res.render('fail', { message: err.message })
             return;
         }
-        console.log(JSON.stringify(sqlResult[0]));
         res.render('success', {code: 1, data: JSON.stringify(sqlResult[0]), message: 'success' })
     });
 });

@@ -20,9 +20,12 @@ let storage = {
     removeSession: function(key) {
     	return sessionStorage.removeItem(key);
     },
-    setTime() {
-        let t = new Date().getTime() + 24 * 60 * 60 * 1000;//24小时 * 60分钟 * 60秒 * 1000
-        let d = new Date(t);
+    setTime(prohibitTime) {
+        // let t = new Date().getTime() + 24 * 60 * 60 * 1000;//24小时 * 60分钟 * 60秒 * 1000
+        let curTime = new Date();
+        let adProhibitTime = prohibitTime || 1440;
+        let addMinute = new Date(curTime.setMinutes(curTime.getMinutes() + adProhibitTime));
+        let d = new Date(addMinute);
         let theMonth = d.getMonth() + 1;
         let theDate = d.getDate();
         let theHours = d.getHours();
@@ -51,13 +54,13 @@ let storage = {
         let spare = `${date}${time}`;
         return parseInt(spare);
     },
-    setAdClk: function(key, value, clickCount) {
+    setAdClk: function(key, value, clickCount, prohibitTime) {
         if(value && value > clickCount) {
             // localStorage.setItem(key, JSON.stringify({data:value, time: this.setTime()}));
             // window.location.reload();
             return 'reload';
         } else if(value <= clickCount) {
-            localStorage.setItem(key, JSON.stringify({data:value, time: this.setTime()}));
+            localStorage.setItem(key, JSON.stringify({data:value, time: this.setTime(prohibitTime)}));
         }
 
     },
@@ -73,7 +76,6 @@ let storage = {
         }
     }
 };
-
 export default storage;
 
 

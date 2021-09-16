@@ -55,7 +55,7 @@ export default {
             return this.$route.params.cid;
         },
         navList() {
-            return this.$store.state.common.channels;
+            return config.channelList;
         },
         ads() {
             return this.$store.state.common.adConfig;

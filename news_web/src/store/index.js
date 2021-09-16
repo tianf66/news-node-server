@@ -149,7 +149,6 @@ store.getChannelList = (params) => {
             params: data
         }).then((response) => {
             let res = response.data;
-            console.log(res);
             if(res.code === 1) {
                 resolve(res.data);
             }
@@ -230,7 +229,7 @@ store.getSystemInfo = () => new Promise((resolve, reject) => {
 
 /*请求用户信息*/
 store.getUserInfo = () => new Promise((resolve, reject) => {
-   axios({
+   /*axios({
         url: "/api/util/soso"
     }).then((res) => {
         if(res.status == 200) {
@@ -239,113 +238,23 @@ store.getUserInfo = () => new Promise((resolve, reject) => {
                 resolve(data.data);
             }
         }
-    });
+    });*/
 });
 
-/*
-    ---------------对接犀光api---------------
-*/
-
-/*  频道信息列表  */
-store.xiGuangNavInfo = (params) => {
-    return new Promise((resolve, reject) => {
-        axios({
-            url: urls.xiGuangNavInfo,
-            timeout: 5000,
-            params: {
-                app_id: 'meitu',
-                log_id: utils.randomString()
-            }
-        }).then((response) => {
-            let res = response.data;
-            if(res.errno === 0) {
-                resolve(res.data);
-            }
-        }).catch((res) => {
-            reject(res.status);
-        });
-    });
-};
-
-/*  频道列表  */
-store.xiGuangChannelList = (params) => {
-    params.app_id = 'meitu';
-    params.user_id = utils.getCookie('news_uid');
-    params.log_id = utils.randomString();
-    params.size = 10;
-    params.res_type = 'news';
-    return new Promise((resolve, reject) => {
-        axios({
-            url: urls.xiGuangChannelList,
-            timeout: 5000,
-            params: params
-        }).then((response) => {
-            let res = response.data;
-            if(res.errno === 0) {
-                let data = res.data;
-                resolve(data.data);
-            }
-        }).catch((res) => {
-            reject(res.status);
-        });
-    });
-};
-
-/* 详情页api*/
-store.xiGuangDetail = (params) => {
-    params.app_id = 'meitu';
-    params.user_id = utils.getCookie('news_uid');
-    params.log_id = utils.randomString();
-    return new Promise((resolve, reject) => {
-        axios({
-            url: urls.xiGuangDetail,
-            timeout: 5000,
-            params: params
-        }).then((response) => {
-            let res = response.data;
-            if(res.errno === 0) {
-                resolve(res);
-            }
-        }).catch((res) => {
-            reject(res.status);
-        });
-    });
-};
-
-/*详情页相关推荐*/
-store.xiGuangDetailRelate = (params) => {
-    params.app_id = 'meitu';
-    params.log_id = utils.randomString();
-    params.size = 30;
-    return new Promise((resolve, reject) => {
-        axios({
-            url: urls.xiGuangDetailRelate,
-            timeout: 5000,
-            params: params
-        }).then((response) => {
-            let res = response.data;
-            if(res.errno === 0) {
-                let data = res.data;
-                resolve(data);
-            }
-        }).catch((res) => {
-            reject(res.status);
-        });
-    });
-}
-
-/*上报api*/
-store.xiGuangReceiveLog = (params) => {
-    params.log_id = utils.randomString();//每次请求时唯一标识，可以随机生成
-    params.app_id = 'meitu';//分配给客户的唯一标识。和其它接口中app_id含义一致
-    params.user_id = utils.getCookie('news_uid');//用户唯一标识
-    params.timestamp = parseInt(new Date().getTime() / 1000);//调用接口发生的时间戳，秒单位
-
-    let data = {data: params};
+store.getAppMenuConfigList = (param) => new Promise((resolve, reject) => {
     axios({
-        url: urls.xiGuangReceiveLog,
-        params: data
-    })
-};
-
+         url: urls.config,
+         params: param
+     }).then((res) => {
+         if(res.status == 200) {
+            let data = res.data;
+            if(data.code == 1) {
+                 resolve(data.data);
+            } else {
+                location.href = `/?did=2`;
+            }
+         }
+     });
+ }); 
+ 
 export default store;

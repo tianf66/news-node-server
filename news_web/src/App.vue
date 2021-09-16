@@ -28,6 +28,8 @@
     <div class="record-number" v-if="recordText" :class="pcAndMobile == 'pc' ? 'record-pc': ''">
           <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_block">{{recordText}}</a>
     </div>
+
+    <div id="app"></div>
   </div>
 </template>
 

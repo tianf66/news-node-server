@@ -28,7 +28,7 @@ const getDetailItem = function({commit, dispatch, state}, params) {
 */
 let ads = window.config.adList;
 let listCount = 0, adIntervalIndex = 0;
-let detailFeedAdId = ads.detailFeed && ads.detailFeed.id ? ads.detailFeed.id.split(',') : null;
+let detailFeedAdId = ads && ads.detailFeed && ads.detailFeed.id ? ads.detailFeed.id.split(',') : null;
 let detailFeedAdInterval = detailFeedAdId && ads.detailFeed.interval ? ads.detailFeed.interval.split(',') : null;
 let detailFeedAdClick = detailFeedAdId && ads.detailFeed.adClickTime ? ads.detailFeed.adClickTime.split(',') : null;
 
