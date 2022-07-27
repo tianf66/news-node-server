@@ -6,7 +6,7 @@
 				<p class="title" style="-webkit-box-orient: vertical;">{{item.title}}</p>
 				<p class="bar" v-if="item.siteType != 2">
 					<span>{{item.author}}</span>
-					<span v-show="!(did == '1367777574511112192' || did == '1366614353280253952')">{{item.createTime}}</span>
+					<!-- <span v-show="!(did == '1367777574511112192' || did == '1366614353280253952')">{{item.createTime}}</span> -->
 				</p>
 			</div>
 		</div>
@@ -17,7 +17,7 @@
 			</div>
 			<p class="bar" v-if="item.siteType != 2">
 				<span>{{item.author}}</span>
-				<span v-show="!(did == '1367777574511112192' || did == '1366614353280253952')">{{item.createTime}}</span>
+				<!-- <span v-show="!(did == '1367777574511112192' || did == '1366614353280253952')">{{item.createTime}}</span> -->
 			</p>
 		</div>
 	</div>

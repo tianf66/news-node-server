@@ -41,23 +41,6 @@ let getTitle = (id) => {
   return title;
 }
 
-/*utils.domReady(() => {
-
-  setTimeout(() => {
-    if(storage.getSession('RETURNHOME')) return;//去除发送刷新日志;
-    let params = router.history.current.params;
-      OUPENGLOGGER({
-       action: 'refresh',
-       payload: {
-          id: getCode(params.cid),
-          title: getTitle(params.cid),
-          type: 'channel',
-          pos: router.history.current.name
-       }
-    });
-  }, 2000);
-});*/
-
 /* 进入页面埋点时间戳*/
 dataCenter.getSystemInfo().then((currentTime) => {
   storage.set('systemInfo', currentTime);
@@ -146,6 +129,10 @@ dataCenter.getAppMenuConfigList({did: did}).then((data) => {
     window.config = navInfo;
     store.dispatch('setNavInfo', {
         navInfo
+    });
+    store.commit({
+      type: 'SETCHANNELINFO',
+      payload: {channels: data.channelList}
     });
     startRouter();
   }

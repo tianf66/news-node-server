@@ -2,7 +2,10 @@
 	<div class="item_container">
 		<div class="item">
 			<p class="title">{{detail.title}}</p>
-			<p class="author"><span>{{detail.author}}</span><span v-show="!(did == '1367777574511112192' || did == '1366614353280253952')">{{detail.createTime}}</span></p>
+			<p class="author">
+				<span>{{detail.author}}</span>
+				<!-- <span v-show="!(did == '1367777574511112192' || did == '1366614353280253952')">{{detail.createTime}}</span> -->
+			</p>
 			<div style="width: 100%;" v-if="ads.detailNewsStart && ads.detailNewsStart.id">
 				<template v-for="(itemAd, index) in AdsDetailNewsStart">
 					<ads-block :aid="itemAd.id" :clickCount="itemAd.clickCount" :adsType="'detailNewsStart'" :immediate="true" type="detail"></ads-block>

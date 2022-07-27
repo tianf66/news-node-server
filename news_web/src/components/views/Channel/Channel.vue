@@ -173,24 +173,24 @@ export default {
 	mounted() {
 
 		window.addEventListener('scroll', (e) => {
-        	if(!this.loading && (this.newsShowCount == 0 || !this.newsShowCount)) {
-                let bodyTop = document.body.getBoundingClientRect().top;
-                let bodyOffsetHeight = document.body.offsetHeight;
-                let innerHeight = window.innerHeight;
-                if(bodyOffsetHeight - Math.abs(bodyTop) <= 2 * innerHeight && this.$route.name == 'channel') {
-                    this.page += 1;
-                    this.loadItems();
-                    OUPENGLOGGER({
-		                action: 'list_get',
-		                payload: {
-		                    id: this.getCode(this.cid),
-		                    title: this.getTitle(this.cid),
-		                    type: 'channel',
-		                    pos: 'list'
-		                }
-		            });
-                }
-            }
+        	// if(!this.loading && (this.newsShowCount == 0 || !this.newsShowCount)) {
+            //     let bodyTop = document.body.getBoundingClientRect().top;
+            //     let bodyOffsetHeight = document.body.offsetHeight;
+            //     let innerHeight = window.innerHeight;
+            //     if(bodyOffsetHeight - Math.abs(bodyTop) <= 2 * innerHeight && this.$route.name == 'channel') {
+            //         this.page += 1;
+            //         this.loadItems();
+            //         OUPENGLOGGER({
+		    //             action: 'list_get',
+		    //             payload: {
+		    //                 id: this.getCode(this.cid),
+		    //                 title: this.getTitle(this.cid),
+		    //                 type: 'channel',
+		    //                 pos: 'list'
+		    //             }
+		    //         });
+            //     }
+            // }
         });
 
         setTimeout(() => {

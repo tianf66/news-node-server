@@ -9,8 +9,8 @@ import {base64Encode} from '@/utils/base64.js';
 
 // const LOGGERURL = (process.env.NODE_ENV === 'production') ? PRD : BETA;
 
-const LOGGERURL = '//logger.oupeng.com/opnews';
-const LOGGERSLOTURL = '//logger.oupeng.com/opnewsquality';
+const LOGGERURL = '/';
+const LOGGERSLOTURL = '/';
 
 let counter = 0;
 const sendLogger = function(params = {}, func = utils.noop) {
@@ -79,7 +79,7 @@ window.OUPENGLOGGER = function(p = {}, callback) {
         }
         /*   --const 1187289889406447616-- end */
 
-        sendLogger(params, callback);
+        // sendLogger(params, callback);
     } catch(e) {
         console.log(e);
     }

@@ -2,6 +2,8 @@ import axios from 'axios';
 // axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded';
 // axios.defaults.headers['X-Requested-With'] = 'XMLHttpRequest';
 import config from './../config.js';
+import detailData from '../../static/data/detail.json';
+import listDate from '../../static/data/list.json';
 
 import utils from '@/utils/';
 import storage from '@/utils/storage.js';
@@ -128,7 +130,7 @@ store.getAds = (slot, flag, adsType, clickCount) => new Promise((resolve, reject
     @param
 */
 store.getChannelList = (params) => {
-    let page = params.page,
+    /*let page = params.page,
         start = (page - 1) * count,
         end = page * count - 1;
     let data = {
@@ -137,11 +139,6 @@ store.getChannelList = (params) => {
         count
     };
     let url = urls.channleList;
-    //天气网奇闻 \ 海豚天气渠道定制;
-    if(window.config.did == '1367777574511112192' || window.config.did == '1366614353280253952') {
-        url = urls.relateNews;
-        data.newsCount = 15;
-    }
     return new Promise((resolve, reject) => {
         axios({
             url: url,
@@ -150,16 +147,35 @@ store.getChannelList = (params) => {
         }).then((response) => {
             let res = response.data;
             if(res.code === 1) {
-                resolve(res.data);
+                let data = res.data;
+                data.forEach((item) => {
+                    let list = [];
+                    item.imgList.forEach((img) => {
+                        list.push(`/static/images/${img.split("/")[11]}`);
+                    })
+                    item.imgList = list;
+                })
+                resolve(data);
             }
         }).catch((res) => {
             reject(res.status);
         });
+    });*/
+    return new Promise((resolve, reject) => {
+        let data = listDate.data;
+        data.forEach((item) => {
+            let list = [];
+            item.imgList.forEach((img) => {
+                list.push(`/static/images/${img.split("/")[11]}`);
+            })
+            item.imgList = list;
+        });
+        resolve(data);
     });
 };
 
 store.getDetail = (params) => {
-    return new Promise((resolve, reject) => {
+    /*return new Promise((resolve, reject) => {
         axios({
             url: urls.detail,
             timeout: 5000,
@@ -167,12 +183,36 @@ store.getDetail = (params) => {
         }).then((response) => {
             let res = response.data;
             if(res.code === 1) {
-                resolve(res.data);
+                let data = res.data, detailObj;
+                data.forEach((item) => {
+                    if(item.id == params.newsId) {
+                        let time = item.createTime.split("-");
+                        let replaceUrl = new RegExp(`https://gallery.opgirl.cn/news/${item.siteId}/${time[0]}/${time[1]}/${time[2].split(" ")[0]}/${item.id}`,"g");
+                        let resContent = item.content.replace(replaceUrl, '/static/images');  
+                        item.content = resContent;
+                        detailObj = item;
+                    } 
+                })
+                resolve(detailObj);
             }
         }).catch((res) => {
             reject(res.status);
         });
-    });
+    });*/
+    return new Promise((resolve, reject) => {
+        let data = detailData.data, detailObj;
+        data.forEach((item) => {
+            if(item.id == params.newsId) {
+                let time = item.createTime.split("-");
+                let replaceUrl = new RegExp(`https://gallery.opgirl.cn/news/${item.siteId}/${time[0]}/${time[1]}/${time[2].split(" ")[0]}/${item.id}`,"g");
+                let resContent = item.content.replace(replaceUrl, '/static/images');
+                item.content = resContent;
+                detailObj = item;
+            } 
+        })
+        resolve(detailObj);
+    })
+    console.log(detailData);
 }
 
 store.getRelateNews = (params) => new Promise((resolve, reject) => {
@@ -184,7 +224,15 @@ store.getRelateNews = (params) => new Promise((resolve, reject) => {
         let res = response.data;
         if(res.code === 1) {
             if(res.data) {
-                resolve(res.data);
+                let data = res.data;
+                data.forEach((item) => {
+                    let list = [];
+                    item.imgList.forEach((img) => {
+                        list.push(`/static/images/${img.split("/")[11]}`);
+                    })
+                    item.imgList = list;
+                })
+                resolve(data);
             } else {
                 reject();
             }
@@ -247,11 +295,12 @@ store.getAppMenuConfigList = (param) => new Promise((resolve, reject) => {
          params: param
      }).then((res) => {
          if(res.status == 200) {
-            let data = res.data;
-            if(data.code == 1) {
-                 resolve(data.data);
+            let data = res.data, did = param.did;
+            if(data[did]) {
+                resolve(data[did]);
             } else {
-                location.href = `/?did=2`;
+                resolve(data[2]);
+                // location.href = `/?did=2`;
             }
          }
      });

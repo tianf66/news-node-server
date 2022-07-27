@@ -24,7 +24,7 @@ import utils from '@/utils';
 import dataCenter from '@/store/index.js';
 import imgTrack from '../imgTrack.js';
 import storage from '@/utils/storage.js';
-import AdstuiaSdk from '@/components/ads/item/AdsTuiaSdk.vue';
+// import AdstuiaSdk from '@/components/ads/item/AdsTuiaSdk.vue';
 import store from '@/vuex/index.js';
 
 window.loadTencent = false;
@@ -42,7 +42,7 @@ window.handleAdEventTBS = function(){
 export default {
     name: 'adsFrame',
     components: {
-        AdstuiaSdk
+        // AdstuiaSdk
     },
     props: ['ads', 'active', 'adsType', 'adMaskShow', 'clickCount'],
     data() {

@@ -42,7 +42,7 @@
 
 				<!-- 进入详情页默认3/2屏,点击查看全文 start -->
 				<div v-if="view_all" class="view_all" @click="viewAll">
-					<p>查看全文<img src="//i.opfed.com/news/expandRed.png" alt=""></p>
+					<p>查看全文<img src="/static/icon/expandRed.png" alt=""></p>
 				</div>
 				<!-- 进入详情页默认3/2屏,点击查看全文 end -->
 			</template>

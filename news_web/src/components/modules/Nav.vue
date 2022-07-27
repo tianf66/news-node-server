@@ -70,6 +70,7 @@ export default {
         // this.iniTabSwiper();
         this.$nextTick(() => {
             ////只配置一个频道时，渠道不显示导航
+            console.log(this.$store.state.common.channels);
             if(this.$store.state.common.channels.length === 1) {
                 this.navContainer = false;
             }

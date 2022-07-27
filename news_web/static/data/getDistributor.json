@@ -1,0 +1,178 @@
+{
+    "2": {
+        "did": "2",
+        "newsApiUpstream": "oupeng",
+        "detailRecommendApiUpstream": "oupeng",
+        "enableIntelligentRecommend": false,
+        "code": "moren",
+        "channelList": [{"id": "1142047545493557248","code": "toutiao.weaoo.com-keji","title": "gaoxiao"}
+        ],
+        "adList": {
+            "openscreen": {
+                "id": "",
+                "adlayerProbability": 0,
+                "adlayerProbabilitys": "",
+                "adClickTime": "",
+                "prohibitTime": ""
+            },
+            "openscreenRenderself": {
+                "id": "",
+                "adlayerProbability": 0,
+                "adlayerProbabilitys": "",
+                "adClickTime": "",
+                "prohibitTime": ""
+            },
+            "switchChannelPop": {
+                "id": "",
+                "adlayerProbability": 0,
+                "adlayerProbabilitys": "",
+                "adClickTime": "",
+                "prohibitTime": ""
+            },
+            "switchChannelPopRenderself": {
+                "id": "",
+                "adlayerProbability": 0,
+                "adlayerProbabilitys": "",
+                "adClickTime": "",
+                "prohibitTime": ""
+            },
+            "listTop": {
+                "id": "",
+                "adlayerProbability": 0,
+                "adlayerProbabilitys": "",
+                "adClickTime": "",
+                "prohibitTime": ""
+            },
+            "listStart": {
+                "id": "",
+                "adlayerProbability": 0,
+                "adlayerProbabilitys": "",
+                "interval": "0",
+                "adClickTime": "",
+                "prohibitTime": ""
+            },
+            "listMiddle": {
+                "id": "",
+                "adlayerProbability": 0,
+                "adlayerProbabilitys": "",
+                "interval": "0",
+                "adClickTime": "",
+                "prohibitTime": ""
+            },
+            "listBottomFloat": {
+                "id": "",
+                "adlayerProbability": 0,
+                "adlayerProbabilitys": "",
+                "adClickTime": "",
+                "prohibitTime": ""
+            },
+            "detailTop": {
+                "id": "",
+                "adlayerProbability": 0,
+                "adlayerProbabilitys": "",
+                "adClickTime": "",
+                "prohibitTime": ""
+            },
+            "detailNewsStart": {
+                "id": "",
+                "adlayerProbability": 0,
+                "adlayerProbabilitys": "",
+                "adClickTime": "",
+                "prohibitTime": ""
+            },
+            "detailNewsMiddle": {
+                "id": "",
+                "adlayerProbability": 0,
+                "adlayerProbabilitys": "",
+                "adClickTime": "",
+                "prohibitTime": ""
+            },
+            "detailNewsEnd": {
+                "id": "",
+                "adlayerProbability": 0,
+                "adlayerProbabilitys": "",
+                "adClickTime": "",
+                "prohibitTime": ""
+            },
+            "detailBottomFloat": {
+                "id": "",
+                "adlayerProbability": 0,
+                "adlayerProbabilitys": "",
+                "adClickTime": "",
+                "prohibitTime": ""
+            },
+            "detailNextPageDown": {
+                "id": "",
+                "adlayerProbability": 0,
+                "adlayerProbabilitys": "",
+                "adClickTime": "",
+                "prohibitTime": ""
+            },
+            "detailFeed": {
+                "id": "",
+                "adlayerProbability": 0,
+                "adlayerProbabilitys": "",
+                "interval": "0",
+                "adClickTime": "",
+                "prohibitTime": ""
+            },
+            "detailPop": {
+                "id": "",
+                "adlayerProbability": 0,
+                "adlayerProbabilitys": "",
+                "adClickTime": "",
+                "prohibitTime": ""
+            },
+            "detailPopRenderself": {
+                "id": "",
+                "adlayerProbability": 0,
+                "adlayerProbabilitys": "",
+                "adClickTime": "",
+                "prohibitTime": ""
+            },
+            "detailFanshiWenzilian": {
+                "id": "",
+                "adlayerProbability": 0,
+                "adlayerProbabilitys": "",
+                "adClickTime": "",
+                "prohibitTime": ""
+            },
+            "buoy": {
+                "id": "",
+                "adClickTime": 0,
+                "prohibitTime": ""
+            },
+            "listTopFloat": {
+                "id": "",
+                "adlayerProbability": 0,
+                "adlayerProbabilitys": "",
+                "adClickTime": "",
+                "prohibitTime": ""
+            },
+            "detailTopFloat": {
+                "id": "",
+                "adlayerProbability": 0,
+                "adlayerProbabilitys": "",
+                "adClickTime": "",
+                "prohibitTime": ""
+            }
+        },
+        "adLayerStatus": 1,
+        "detailRecommendNewsCount": 11,
+        "adDownLayerStatus": 2,
+        "speechcraftStatus": 2,
+        "speechcraftChance": 100,
+        "speechcraftContent": "",
+        "feedStatus": 0,
+        "tongjiBaidu": "",
+        "tongjiCnzz": "",
+        "tongjiBaiduChance": 100,
+        "tongjiCnzzChance": 100,
+        "revisitRedirectConfig": "",
+        "revisitOnlineTime": "",
+        "revisitOfflineTime": "",
+        "revisitStatus": 0,
+        "newsShowCount": 0,
+        "detailsPageEntryJump": ""
+    }
+}

@@ -98,8 +98,8 @@ export default {
 .icon-backTop:before {
     content: "";
     position: absolute;
-    left: 0.11rem;
-    top: 0.04rem;
+    left: 0.12rem;
+    top: 0.03rem;
     width: 0.02rem;
     height: 0.24rem;
     background-color: #616161;

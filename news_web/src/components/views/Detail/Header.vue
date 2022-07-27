@@ -4,7 +4,7 @@
             <header class="detail-header">
                 <div class="back" @click="backHandler">
                     <!-- <span class="sprite back-icon"></span> -->
-                    <img class="back-icon" src="//i.opfed.com/news/return.png">
+                    <img class="back-icon" src="/static/icon/return.png">
                 </div>
             </header>
             <!-- 详情页顶部浮层广告 start -->
