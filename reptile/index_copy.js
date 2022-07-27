@@ -87,12 +87,23 @@ let reptileDetail = function() {
                 //     replaceUrl = new RegExp(`https://gallery.opgirl.cn/news/${data.siteId}/${time[0]}/${time[1]}/${time[2].split(" ")[0]}/${data.id}`,"g");
                 // let resContent = data.content.replace(replaceUrl, "/static/images");
                 //     data.content = resContent;
-                let imgList = data.imgList;
-                imgList.forEach((imgItem) => {
-                    let name = `/${imgItem.split("/")[11]}`;
-                    getImgUrl(imgItem, name);
-                });
-                list.push(data);
+                // let imgList = data.imgList;
+                // imgList.forEach((imgItem) => {
+                //     let name = `/${imgItem.split("/")[11]}`;
+                //     getImgUrl(imgItem, name);
+                // });
+                let obj = {};
+                obj.id = data.id;
+                obj.title = data.title;
+                obj.content = data.content;
+                obj.author = data.author;
+                obj.createTime = data.createTime;
+                obj.siteType = data.siteType;
+                obj.lastId = data.lastId;
+                obj.nextId = data.nextId;
+                obj.channelId = data.channelId;
+                obj.siteId = data.siteId;
+                list.push(obj);
             });
         })
 

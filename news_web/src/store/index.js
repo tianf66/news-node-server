@@ -3,7 +3,6 @@ import axios from 'axios';
 // axios.defaults.headers['X-Requested-With'] = 'XMLHttpRequest';
 import config from './../config.js';
 import detailData from '../../static/data/detail.json';
-import listDate from '../../static/data/list.json';
 
 import utils from '@/utils/';
 import storage from '@/utils/storage.js';
@@ -130,7 +129,7 @@ store.getAds = (slot, flag, adsType, clickCount) => new Promise((resolve, reject
     @param
 */
 store.getChannelList = (params) => {
-    /*let page = params.page,
+    let page = params.page,
         start = (page - 1) * count,
         end = page * count - 1;
     let data = {
@@ -160,17 +159,6 @@ store.getChannelList = (params) => {
         }).catch((res) => {
             reject(res.status);
         });
-    });*/
-    return new Promise((resolve, reject) => {
-        let data = listDate.data;
-        data.forEach((item) => {
-            let list = [];
-            item.imgList.forEach((img) => {
-                list.push(`/static/images/${img.split("/")[11]}`);
-            })
-            item.imgList = list;
-        });
-        resolve(data);
     });
 };
 
