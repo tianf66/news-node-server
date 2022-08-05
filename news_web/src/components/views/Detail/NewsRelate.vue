@@ -13,7 +13,7 @@
 						<p class="nr-title" style="-webkit-box-orient: vertical;">{{ item.title}}</p>
 						<div class="n-desc">
 							<span>{{ item.author }}</span>
-							<span style="margin-left: 0.1rem;">{{ item.createTime }}</span>
+							<!-- <span style="margin-left: 0.1rem;">{{ item.createTime }}</span> -->
 						</div>
 					</div>
 				</div>
@@ -24,7 +24,7 @@
 					</div>
 					<div class="n-desc">
 						<span>{{ item.author }}</span>
-						<span style="margin-left: 0.1rem;">{{ item.createTime }}</span>
+						<!-- <span style="margin-left: 0.1rem;">{{ item.createTime }}</span> -->
 					</div>
 				</div>
 			</div>

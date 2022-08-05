@@ -76,7 +76,8 @@ export default {
       });
 
       this.pcAndMobile = navigator.userAgent.toLowerCase().indexOf('mobile') > -1 ? 'mobile' : 'pc';
-      if(location.host.indexOf('fonews.cn') > -1) this.recordText = '京ICP备20015773号-2';
+      // if(location.host.indexOf('newsflow.cn') > -1) 
+      this.recordText = '辽ICP备2022007743号';
     },
     methods: {
       closePopAd() {
