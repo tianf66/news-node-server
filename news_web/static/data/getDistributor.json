@@ -4,8 +4,184 @@
         "newsApiUpstream": "oupeng",
         "detailRecommendApiUpstream": "oupeng",
         "enableIntelligentRecommend": false,
+        "code": "huitoutiao",
+        "channelList": [{"id": "1142047545493557248","code": "toutiao.weaoo.com-gaoxiao","title": "gaoxiao"}
+        ],
+        "adList": {
+            "openscreen": {
+                "id": "",
+                "adlayerProbability": 0,
+                "adlayerProbabilitys": "",
+                "adClickTime": "",
+                "prohibitTime": ""
+            },
+            "openscreenRenderself": {
+                "id": "",
+                "adlayerProbability": 0,
+                "adlayerProbabilitys": "",
+                "adClickTime": "",
+                "prohibitTime": ""
+            },
+            "switchChannelPop": {
+                "id": "",
+                "adlayerProbability": 0,
+                "adlayerProbabilitys": "",
+                "adClickTime": "",
+                "prohibitTime": ""
+            },
+            "switchChannelPopRenderself": {
+                "id": "",
+                "adlayerProbability": 0,
+                "adlayerProbabilitys": "",
+                "adClickTime": "",
+                "prohibitTime": ""
+            },
+            "listTop": {
+                "id": "6829847,6829848",
+                "adlayerProbability": 0,
+                "adlayerProbabilitys": "",
+                "adClickTime": "",
+                "prohibitTime": ""
+            },
+            "listStart": {
+                "id": "",
+                "adlayerProbability": 0,
+                "adlayerProbabilitys": "",
+                "interval": "0",
+                "adClickTime": "",
+                "prohibitTime": ""
+            },
+            "listMiddle": {
+                "id": "6829849,6829850,6829847,6829847,6829848,6829849",
+                "adlayerProbability": 0,
+                "adlayerProbabilitys": "",
+                "interval": "1,0,0,1,0,0",
+                "adClickTime": "",
+                "prohibitTime": ""
+            },
+            "listBottomFloat": {
+                "id": "",
+                "adlayerProbability": 0,
+                "adlayerProbabilitys": "",
+                "adClickTime": "",
+                "prohibitTime": ""
+            },
+            "detailTop": {
+                "id": "6829850",
+                "adlayerProbability": 0,
+                "adlayerProbabilitys": "",
+                "adClickTime": "",
+                "prohibitTime": ""
+            },
+            "detailNewsStart": {
+                "id": "6829847",
+                "adlayerProbability": 0,
+                "adlayerProbabilitys": "",
+                "adClickTime": "",
+                "prohibitTime": ""
+            },
+            "detailNewsMiddle": {
+                "id": "",
+                "adlayerProbability": 0,
+                "adlayerProbabilitys": "",
+                "adClickTime": "",
+                "prohibitTime": ""
+            },
+            "detailNewsEnd": {
+                "id": "6829847",
+                "adlayerProbability": 0,
+                "adlayerProbabilitys": "",
+                "adClickTime": "",
+                "prohibitTime": ""
+            },
+            "detailBottomFloat": {
+                "id": "",
+                "adlayerProbability": 0,
+                "adlayerProbabilitys": "",
+                "adClickTime": "",
+                "prohibitTime": ""
+            },
+            "detailNextPageDown": {
+                "id": "6829850,6829847",
+                "adlayerProbability": 0,
+                "adlayerProbabilitys": "",
+                "adClickTime": "",
+                "prohibitTime": ""
+            },
+            "detailFeed": {
+                "id": "6829850,6829847,6829850,6829847,6829850,6829847,6829850,6829847",
+                "adlayerProbability": 0,
+                "adlayerProbabilitys": "",
+                "interval": "0,0,1,0,1,0,1,0",
+                "adClickTime": "",
+                "prohibitTime": ""
+            },
+            "detailPop": {
+                "id": "",
+                "adlayerProbability": 0,
+                "adlayerProbabilitys": "",
+                "adClickTime": "",
+                "prohibitTime": ""
+            },
+            "detailPopRenderself": {
+                "id": "",
+                "adlayerProbability": 0,
+                "adlayerProbabilitys": "",
+                "adClickTime": "",
+                "prohibitTime": ""
+            },
+            "detailFanshiWenzilian": {
+                "id": "",
+                "adlayerProbability": 0,
+                "adlayerProbabilitys": "",
+                "adClickTime": "",
+                "prohibitTime": ""
+            },
+            "buoy": {
+                "id": "",
+                "adClickTime": 0,
+                "prohibitTime": ""
+            },
+            "listTopFloat": {
+                "id": "",
+                "adlayerProbability": 0,
+                "adlayerProbabilitys": "",
+                "adClickTime": "",
+                "prohibitTime": ""
+            },
+            "detailTopFloat": {
+                "id": "",
+                "adlayerProbability": 0,
+                "adlayerProbabilitys": "",
+                "adClickTime": "",
+                "prohibitTime": ""
+            }
+        },
+        "adLayerStatus": 1,
+        "detailRecommendNewsCount": 11,
+        "adDownLayerStatus": 2,
+        "speechcraftStatus": 1,
+        "speechcraftChance": 100,
+        "speechcraftContent": "阅读4/4篇文章获得更多奖励",
+        "feedStatus": 0,
+        "tongjiBaidu": "",
+        "tongjiCnzz": "",
+        "tongjiBaiduChance": 100,
+        "tongjiCnzzChance": 100,
+        "revisitRedirectConfig": "",
+        "revisitOnlineTime": "",
+        "revisitOfflineTime": "",
+        "revisitStatus": 0,
+        "newsShowCount": 0,
+        "detailsPageEntryJump": ""
+    },
+    "1": {
+        "did": "1",
+        "newsApiUpstream": "oupeng",
+        "detailRecommendApiUpstream": "oupeng",
+        "enableIntelligentRecommend": false,
         "code": "moren",
-        "channelList": [{"id": "1142047545493557248","code": "toutiao.weaoo.com-keji","title": "gaoxiao"}
+        "channelList": [{"id": "1142047545493557248","code": "toutiao.weaoo.com-gaoxiao","title": "gaoxiao"}
         ],
         "adList": {
             "openscreen": {
@@ -55,7 +231,7 @@
                 "id": "",
                 "adlayerProbability": 0,
                 "adlayerProbabilitys": "",
-                "interval": "0",
+                "interval": "",
                 "adClickTime": "",
                 "prohibitTime": ""
             },
@@ -112,7 +288,7 @@
                 "id": "",
                 "adlayerProbability": 0,
                 "adlayerProbabilitys": "",
-                "interval": "0",
+                "interval": "",
                 "adClickTime": "",
                 "prohibitTime": ""
             },
@@ -161,7 +337,7 @@
         "detailRecommendNewsCount": 11,
         "adDownLayerStatus": 2,
         "speechcraftStatus": 2,
-        "speechcraftChance": 100,
+        "speechcraftChance": 0,
         "speechcraftContent": "",
         "feedStatus": 0,
         "tongjiBaidu": "",

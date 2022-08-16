@@ -26,25 +26,29 @@ const getDetailItem = function({commit, dispatch, state}, params) {
 /*
     详情页feed流广告封装 start
 */
-let ads = window.config.adList;
 let listCount = 0, adIntervalIndex = 0;
-let detailFeedAdId = ads && ads.detailFeed && ads.detailFeed.id ? ads.detailFeed.id.split(',') : null;
-let detailFeedAdInterval = detailFeedAdId && ads.detailFeed.interval ? ads.detailFeed.interval.split(',') : null;
-let detailFeedAdClick = detailFeedAdId && ads.detailFeed.adClickTime ? ads.detailFeed.adClickTime.split(',') : null;
 
 function getDetailFeedAdIntervalSlotId() {
+    let ads = window.config.adList;
+    let detailFeedAdId = ads && ads.detailFeed && ads.detailFeed.id ? ads.detailFeed.id.split(',') : null;
     if(detailFeedAdId && detailFeedAdId[adIntervalIndex]) {
         return {id: detailFeedAdId[adIntervalIndex]};
     }
 }
 
 function getDetailFeedAdIntervalSlodInterval() {
+    let ads = window.config.adList;
+    let detailFeedAdId = ads && ads.detailFeed && ads.detailFeed.id ? ads.detailFeed.id.split(',') : null;
+    let detailFeedAdInterval = detailFeedAdId && ads.detailFeed.interval ? ads.detailFeed.interval.split(',') : null;
     if(detailFeedAdInterval && detailFeedAdInterval[adIntervalIndex]) {
         return parseInt(detailFeedAdInterval[adIntervalIndex]);
     }
 }
 
 function getDetailFeedAdIntervalSlodClick() {
+    let ads = window.config.adList;
+    let detailFeedAdId = ads && ads.detailFeed && ads.detailFeed.id ? ads.detailFeed.id.split(',') : null;
+    let detailFeedAdClick = detailFeedAdId && ads.detailFeed.adClickTime ? ads.detailFeed.adClickTime.split(',') : null;
     if(detailFeedAdClick && detailFeedAdClick[adIntervalIndex]) {
         return detailFeedAdClick[adIntervalIndex];
     }

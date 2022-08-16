@@ -1,16 +1,24 @@
 import dataCenter from '@/store/index.js';
 import utils from '@/utils/index.js';
 
-let ads = window.config && window.config.adList || null;
+// let ads = window.config.adList;
 let listCount = 0, adIntervalIndex = 0, middleIntervalIndex = 0, isListStartSlot = true, flag = true;
-let listStartAdId = ads && ads.listStart && ads.listStart.id ? ads.listStart.id.split(',') : null;
-let listStartAdInterval = listStartAdId && ads.listStart.interval ? ads.listStart.interval.split(',') : null;
-let listStartAdClickCount = listStartAdId && ads.listStart.adClickTime ? ads.listStart.adClickTime.split(',') : 0;
-let listMiddleAdId = ads && ads.listMiddle && ads.listMiddle.id ? ads.listMiddle.id.split(',') : null;
-let listMiddleAdInterval = listMiddleAdId && ads.listMiddle.interval ? ads.listMiddle.interval.split(',') : null;
-let listMiddleAdClick = listMiddleAdId && ads.listMiddle.adClickTime ? ads.listMiddle.adClickTime.split(',') : 0;
+// let listStartAdId = ads.listStart && ads.listStart.id ? ads.listStart.id.split(',') : null;
+// let listStartAdInterval = listStartAdId && ads.listStart.interval ? ads.listStart.interval.split(',') : null;
+// let listStartAdClickCount = listStartAdId && ads.listStart.adClickTime ? ads.listStart.adClickTime.split(',') : 0;
+// let listMiddleAdId = ads.listMiddle && ads.listMiddle.id ? ads.listMiddle.id.split(',') : null;
+// let listMiddleAdInterval = listMiddleAdId && ads.listMiddle.interval ? ads.listMiddle.interval.split(',') : null;
+// let listMiddleAdClick = listMiddleAdId && ads.listMiddle.adClickTime ? ads.listMiddle.adClickTime.split(',') : 0;
 
 function getSlotInfo() {
+    let ads = window.config.adList;
+// let listCount = 0, adIntervalIndex = 0, middleIntervalIndex = 0, isListStartSlot = true, flag = true;
+let listStartAdId = ads.listStart && ads.listStart.id ? ads.listStart.id.split(',') : null;
+let listStartAdInterval = listStartAdId && ads.listStart.interval ? ads.listStart.interval.split(',') : null;
+let listStartAdClickCount = listStartAdId && ads.listStart.adClickTime ? ads.listStart.adClickTime.split(',') : 0;
+let listMiddleAdId = ads.listMiddle && ads.listMiddle.id ? ads.listMiddle.id.split(',') : null;
+let listMiddleAdInterval = listMiddleAdId && ads.listMiddle.interval ? ads.listMiddle.interval.split(',') : null;
+let listMiddleAdClick = listMiddleAdId && ads.listMiddle.adClickTime ? ads.listMiddle.adClickTime.split(',') : 0;
     if(isListStartSlot && listStartAdId && listStartAdId[adIntervalIndex]) {
         return {id: listStartAdId[adIntervalIndex], interval: parseInt(listStartAdInterval[adIntervalIndex]), clickCount: listStartAdClickCount[adIntervalIndex], pos: 'listStart'};
     } else if (listMiddleAdId) {
@@ -99,30 +107,6 @@ const fetch = function({commit, dispatch, state}, params) {
     });
 };
 
-const xiGuangFetch = function({commit, dispatch, state}, params) {
-    return new Promise((resolve, reject) => {
-        dataCenter.xiGuangChannelList(params).then((data) => {
-            let page = params.page;
-            let list = [];
-            data.forEach((item, index) => {
-                if(!item.adslot_id) {
-                    list.push(item);
-                }
-            })
-            let lastColumns = getColumnsData(list, page);
-
-            commit({
-                type: 'ADDXIGUANGLIST',
-                lists: lastColumns
-            });
-            resolve(data);
-        }, (status) => {
-            reject(status);
-        });
-    });
-};
-
 export default {
     fetch,
-    xiGuangFetch
 };

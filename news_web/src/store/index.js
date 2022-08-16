@@ -14,20 +14,14 @@ let count = navConfig.config.newsShowCount || 15;
 let store = {
     navConfig
 };
-/*   --const 1187289889406447616-- start */
+/*   --const 2-- start */
 let constAdList = [
-    {clk_track: [],height: 6,html: "<script type=\"text/javascript\" smua=\"d=m&s=b&u=u3605555&h=20:6\" src=\"https://www.sinawap.com/smu/o.js\"></script>",impr_track: [],slot: 3597299,subtype: 19,type: 10,width: 20},
-    {clk_track: [],height: 6,html: "<script type=\"text/javascript\" smua=\"d=m&s=b&u=u3605717&h=20:6\" src=\"https://www.sinawap.com/smu/o.js\"></script>",impr_track: [],slot: 3597567,subtype: 19,type: 10,width: 20},
-    {clk_track: [],height: 6,html: "<script type=\"text/javascript\" smua=\"d=m&s=b&u=u3605657&h=20:6\" src=\"https://www.sinawap.com/smu/o.js\"></script>",impr_track: [],slot: 3597598,subtype: 19,type: 10,width: 20},
-    {clk_track: [],height: 6,html: "<script type=\"text/javascript\" smua=\"d=m&s=b&u=u3605657&h=20:6\" src=\"https://www.sinawap.com/smu/o.js\"></script>",impr_track: [],slot: 35975981,subtype: 19,type: 10,width: 20},
-    {clk_track: [],height: 6,html: "<script type=\"text/javascript\" smua=\"d=m&s=b&u=u3605657&h=20:6\" src=\"https://www.sinawap.com/smu/o.js\"></script>",impr_track: [],slot: 35975982,subtype: 19,type: 10,width: 20},
-    {clk_track: [],height: 6,html: "<script type=\"text/javascript\" smua=\"d=m&s=b&u=u3605657&h=20:6\" src=\"https://www.sinawap.com/smu/o.js\"></script>",impr_track: [],slot: 35975983,subtype: 19,type: 10,width: 20},
-    {clk_track: [],height: 6,html: "<script type=\"text/javascript\" smua=\"d=m&s=b&u=u3605657&h=20:6\" src=\"https://www.sinawap.com/smu/o.js\"></script>",impr_track: [],slot: 35975984,subtype: 19,type: 10,width: 20},
-    {clk_track: [],height: 6,html: "<script type=\"text/javascript\" smua=\"d=m&s=b&u=u3605657&h=20:6\" src=\"https://www.sinawap.com/smu/o.js\"></script>",impr_track: [],slot: 35975985,subtype: 19,type: 10,width: 20},
-    {clk_track: [],height: 6,html: "<script type=\"text/javascript\" smua=\"d=m&s=b&u=u3605657&h=20:6\" src=\"https://www.sinawap.com/smu/o.js\"></script>",impr_track: [],slot: 35975986,subtype: 19,type: 10,width: 20},
-    {"banner":"https://i.opfed.com/opgirl/adRedIcon/redAdBanner4.png","clk_track":[],"clk_url":"https://interaction.clotfun.online/sheep?appkey=22d0779713c506efa909578355a2f800&adSpaceKey=df5bd46ef27b10c0e8c2ad25914098a1&from=H5&1=1","clk_url_have_macro":false,"impr_track":[],"slot":87654321,"type":2}
+    {"clk_track":[],"height":6,"html":"<div class=\"_45uzsbmfp6i\"></div>\n    <script type=\"text/javascript\">\n        (window.slotbydup = window.slotbydup || []).push({\n            id: \"u6829847\",\n            container: \"_45uzsbmfp6i\",\n            async: true\n        });\n    </script>\n    <!-- 多条广告如下脚本只需引入一次 -->\n    <script type=\"text/javascript\" src=\"//cpro.baidustatic.com/cpro/ui/cm.js\" async=\"async\" defer=\"defer\" >\n    </script>","impr_track":[],"slot":6829847,"subtype":10,"type":10,"width":20},
+    {"clk_track":[],"height":6,"html":"<div class=\"_46uzsbmfp6i\"></div>\n    <script type=\"text/javascript\">\n        (window.slotbydup = window.slotbydup || []).push({\n            id: \"u6829848\",\n            container: \"_46uzsbmfp6i\",\n            async: true\n        });\n    </script>\n    <!-- 多条广告如下脚本只需引入一次 -->\n    <script type=\"text/javascript\" src=\"//cpro.baidustatic.com/cpro/ui/cm.js\" async=\"async\" defer=\"defer\" >\n    </script>","impr_track":[],"slot":6829848,"subtype":10,"type":10,"width":20},
+    {"clk_track":[],"height":6,"html":"<div class=\"_47uzsbmfp6i\"></div>\n    <script type=\"text/javascript\">\n        (window.slotbydup = window.slotbydup || []).push({\n            id: \"u6829849\",\n            container: \"_47uzsbmfp6i\",\n            async: true\n        });\n    </script>\n    <!-- 多条广告如下脚本只需引入一次 -->\n    <script type=\"text/javascript\" src=\"//cpro.baidustatic.com/cpro/ui/cm.js\" async=\"async\" defer=\"defer\" >\n    </script>","impr_track":[],"slot":6829849,"subtype":10,"type":10,"width":20},
+    {"clk_track":[],"height":6,"html":"<div class=\"_48uzsbmfp6i\"></div>\n    <script type=\"text/javascript\">\n        (window.slotbydup = window.slotbydup || []).push({\n            id: \"u6829850\",\n            container: \"_48uzsbmfp6i\",\n            async: true\n        });\n    </script>\n    <!-- 多条广告如下脚本只需引入一次 -->\n    <script type=\"text/javascript\" src=\"//cpro.baidustatic.com/cpro/ui/cm.js\" async=\"async\" defer=\"defer\" >\n    </script>","impr_track":[],"slot":6829850,"subtype":10,"type":10,"width":20},
 ]
-/*   --const 1187289889406447616-- end */
+/*   --const 2-- end */
 /*
 	@param slot 广告ID
 */
@@ -42,13 +36,11 @@ let adFundamental = (slot, banned, adsType, clickCount, resolve, reject) => {
 
     let storagePos = storage.getAdStatus(`${adsType}_${slot}_${did}`, clickCount) || false;
     if(storagePos) banned = true;
-
-    /*   --const 1187289889406447616-- start */
-    if(window.config.did == '1187289889406447616') {
+    /*   --const 2-- start */
+    if(window.config.did == '2') {
         if(banned) {
-            resolve(Object.assign({}, {"banner":"https://i.opfed.com/opgirl/adRedIcon/redAdBanner6.png","clk_track":[],"clk_url":"https://interaction.clotfun.online/sheep?appkey=22d0779713c506efa909578355a2f800&adSpaceKey=df5bd46ef27b10c0e8c2ad25914098a1&from=H5&1=1","clk_url_have_macro":false,"impr_track":[],"slot": 0,"type":2}));
+            resolve(Object.assign({}, {}));
         } else if(!banned) {
-            /* 3597094 3597096 3597119*/
             constAdList.forEach((item, index) => {
                 if(item.slot === slot) {
                     resolve(Object.assign({}, item));
@@ -57,50 +49,8 @@ let adFundamental = (slot, banned, adsType, clickCount, resolve, reject) => {
         }
         return;
     }
-    /*   --const 1187289889406447616-- end */
-    utils.jsonp(urls.ads, function(data) {
-        if(data instanceof Array) {
-            if(data.length == 0) {
-                reject();
-            } else if(data.length == 1) {
-                if(banned && (data[0].subtype == 10 || data[0].subtype == 19)) reject();
-                else resolve(Object.assign({}, data[0]));
-            } else {
-                let baiduAd, ad;
-                for(let i in data) {
-                    if(banned && data[i].subtype != 10 && data[i].subtype != 19) {
-                        // 禁封该用户访问非百度广告
-                        ad = Object.assign({}, data[i]);
-                        break;
-                    } else if(!banned) {
-                        if(window.config.did == '1253611471980150784' || window.config.did == '1253611439520567296') {
-                            console.log(window.config.did);
-                            //渠道定制， 按平台竞价出广告类型
-                            ad = Object.assign({}, data[0]);
-                            break;
-                        } else {
-                            // 非禁封该用户访问百度广告
-                            if(data[i].subtype == 10 || data[i].subtype == 19) {
-                                baiduAd = Object.assign({}, data[i]);
-                                break;
-                            } else {
-                                ad = Object.assign({}, data[i]);
-                            }
-                        }
-                    }
-                }
-                if(baiduAd) resolve(baiduAd);
-                else if(ad) resolve(ad);
-            }
-        } else {
-            resolve(Object.assign({}, data));
-        }
-    }, function() {
-        reject();
-    }, {
-        jsonp: 'cb',
-        data
-    });
+    /*   --const 2-- end */
+    
 };
 
 store.getAds = (slot, flag, adsType, clickCount) => new Promise((resolve, reject) => {
@@ -108,21 +58,22 @@ store.getAds = (slot, flag, adsType, clickCount) => new Promise((resolve, reject
         adFundamental(slot, false, adsType, clickCount, resolve, reject);
         return;
     }
-    axios({
-        url: urls.isAdForbidden,
-        params: {
-            did: window.config.did,
-            ad: adsType,
-            uid: utils.getCookie('news_uid')
-        }
-    }).then((res) => {
-        if(res.status == 200) {
-            let data = res.data;
-            adFundamental(slot, false, adsType, clickCount, resolve, reject);
-        }
-    }).catch((e) => {
-        //
-    });
+    // axios({
+    //     url: urls.isAdForbidden,
+    //     params: {
+    //         did: window.config.did,
+    //         ad: adsType,
+    //         uid: utils.getCookie('news_uid')
+    //     }
+    // }).then((res) => {
+    //     if(res.status == 200) {
+    //         let data = res.data;
+    //         adFundamental(slot, false, adsType, clickCount, resolve, reject);
+    //     }
+    // }).catch((e) => {
+    //     //
+    // });
+    adFundamental(slot, false, adsType, clickCount, resolve, reject);
 });
 
 /*
@@ -131,7 +82,7 @@ store.getAds = (slot, flag, adsType, clickCount) => new Promise((resolve, reject
 store.getChannelList = (params) => {
     let page = params.page,
         start = (page - 1) * count,
-        end = page * count - 1;
+        end = page * count;
     let data = {
         ...params,
         // start,
@@ -153,8 +104,9 @@ store.getChannelList = (params) => {
                         list.push(`/static/images/${img.split("/")[11]}`);
                     })
                     item.imgList = list;
-                })
-                resolve(data);
+                });
+                let dataList = data.slice(start, end);
+                resolve(dataList);
             }
         }).catch((res) => {
             reject(res.status);

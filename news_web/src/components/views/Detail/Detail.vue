@@ -25,7 +25,7 @@
 				<detail-image-content :detail="detail"></detail-image-content>
 			</template>
 			<!-- 详情页图集组件 end -->
-			<template v-if="detail.siteType && detail.siteType == 1 && did != '1323206074580066304'">
+			<template v-if="detail.siteType && detail.siteType == 1">
 
 				<!-- 详情页新闻组件 start -->
 				<div v-if="" :style="styleObj">
@@ -46,15 +46,6 @@
 				</div>
 				<!-- 进入详情页默认3/2屏,点击查看全文 end -->
 			</template>
-
-			<!--					(渠道定制)  								-->
-			<!-- 1323206074580066304 老子搜书3 不显示查看全文功能，默认展开全部 -->
-			<div v-if="did == '1323206074580066304'">
-				<x-detail-content v-if="newsApiUpstream == 'xiguang'" :detail="detail"></x-detail-content>
-				<detail-conent v-else :detail="detail"></detail-conent>
-			</div>
-			<!--					(渠道定制)  								-->
-			<!-- 1323206074580066304 老子搜书3 不显示查看全文功能，默认展开全部 -->
 		</div>
 		<!-- 详情页conent内容 end -->
 
@@ -400,10 +391,10 @@ export default {
 	            }
 	        });
 
-			if(config.did == '1199626744223174656' || config.did == '1202163185784422400') {
+			if(window.speechcraftContentFlat) {
 				let taskNews = storage.getSession('taskNews') || null;
                 let taskNewsNum = taskNews ? taskNews : 0;
-                if(taskNewsNum < 3) {
+                if(taskNewsNum < window.taskCount) {
                     storage.setSession('taskNews', taskNewsNum += 1);
                 }
 			}

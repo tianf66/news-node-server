@@ -1,23 +1,6 @@
 <template>
-	<div class="task-box" v-if="words">
+	<div class="task-box" v-if="words && isShow">
 		<div v-if="!isOkTask">
-			<div class="task" v-if="constSouGouDid">
-				<!-- 普通提示语 -->
-				<p v-if="isconstSouGouShow">还需体验{{timeCount}}秒</p>
-				<p v-if="isconstSouGouShow">完成后获取更多奖励</p>
-				<!-- 广告命中率比较高的提示语 -->
-				<p v-if="!isconstSouGouShow">点击2次广告后获取更多金币</p>
-				<p v-if="!isconstSouGouShow">还需体验{{timeCount}}秒</p>
-			</div>
-			<div class="task" v-if="did == '1199626744223174656'">
-				<!-- 惠头条 -->
-				<p>点击2篇文章或2次广告后获取更多金币</p>
-				<p>已体验{{timeCount}}秒</p>
-			</div>
-			<div class="task" v-if="did == '1192351664439058432'">
-				<!-- 阅读60s非定制版本 -->
-				<p>还需体验{{timeCount}}S获取更多奖励</p>
-			</div>
 			<div class="task" v-if="words">
 				<p>{{speechcraftContent}}</p>
 				<p>还需体验{{timeCount}}秒</p>
@@ -36,6 +19,7 @@ export default {
 			taskNews: storage.getSession('taskNews') || 0,
 			timeCount: storage.getSession('taskTime') == null ? 60 : storage.getSession('taskTime'),
 			timer: null,
+			taskNewsTimer: null,
 			isDown: true,
 			isOkTask: false,
 			isconstSouGouShow: true
@@ -45,44 +29,42 @@ export default {
 		did() {
             return config.did;
         },
-        words() {//定制底部任务栏 全部渠道did
-        	// let did = this.did;
-        	// let constDidList = ['1234392389649268736', '1234392433337180160', '1199626744223174656', '1192351664439058432', '1209739253827522560', '1216675817157677056', '1202163185784422400', '1231466140354314240', '1253611439520567296', '1253611471980150784', '1270966429490495488'];
-        	// return constDidList.indexOf(did) > -1;
-        	// let speechcraftStatus;
-        	// if(config.did === '1245923128911712256' && config.speechcraftStatus === 1) {
-        	// 	if(Math.ceil(Math.random() * 100) < 50) {
-        	// 		speechcraftStatus = true;
-        	// 	} else {
-        	// 		speechcraftStatus = false;
-        	// 	}
-        	// } else {
-        	// 	speechcraftStatus = config.speechcraftStatus && config.speechcraftStatus === 1 ? true : false;
-        	// }
-        	// return speechcraftStatus;
-        	let flag = false,
+		isShow() {
+			return window.config.speechcraftStatus == 1;
+		},
+        words() {
+        	let constTaskFlag = storage.getSession("CONSTTASKFLAG") || 0,
         		status = config.speechcraftStatus || 2,
         		chance = config.speechcraftChance || 0;
-        	if(status && status === 1 && (Math.floor(Math.random() * 100)+1 <= chance)) {
-        		flag = true;
+        	if(status && status === 1 && constTaskFlag === 0) {
+				if((Math.floor(Math.random() * 100)+1 <= chance)) storage.setSession('CONSTTASKFLAG', 1);
+        		else storage.setSession('CONSTTASKFLAG', 2);
         	}
-        	return flag;
-        },
-        constSouGouDid() {//定制底部任务栏 搜狗渠道did
-        	let did = this.did;
-        	let constSouGouDidList = ['1209739253827522560'];//惠头条SG4
-        	return constSouGouDidList.indexOf(did) > -1;
+        	return storage.getSession("CONSTTASKFLAG") === 1 ? true : false;
         },
         speechcraftContent() {
-        	return window.config.speechcraftContent || '需点击2次广告后完成任务';
+			let text = "";
+			window.speechcraftContentFlat = window.config.speechcraftContent.indexOf("/") > -1 ? true : false;
+			if(window.speechcraftContentFlat) {
+				let list = window.config.speechcraftContent.split("/");
+				window.taskCount = list[1].charAt(0);
+				text = `${list[0].substr(0, list[0].length - 1)}${this.taskNews}/${list[1]}`;
+			} else {
+				text = window.config.speechcraftContent;
+			}
+        	return text || '需点击2次广告后完成任务';
         }
 	},
 	mounted() {
 
 		this.resetHandle();
 
-		if(this.taskNews == 3 && this.timeCount == 0) {
+		if(this.taskNews == window.taskCount && this.timeCount == 0) {
 			this.isOkTask = true;
+		}
+
+		if(window.speechcraftContentFlat) {
+			this.watchTaskNews();
 		}
 
 		let CONSTSHOW = storage.getSession('CONSTSHOW');
@@ -102,10 +84,10 @@ export default {
 		$route(_new, _old) {
 			this.taskNews = storage.getSession('taskNews');
 
-			if(this.taskNews == 3 && this.timeCount == 0) {
+			if(this.taskNews == window.taskCount && this.timeCount == 0) {
 				this.isOkTask = true;
 			}
-		},
+		}
 	},
 	updated() {
 	},
@@ -118,18 +100,26 @@ export default {
 		                this.timeCount--;
 		                storage.setSession('taskTime', this.timeCount);
 		                if(this.timeCount == 0) {
-		                	this.clearTimer();
-		                	if(this.taskNews == 3) this.isOkTask = true;
+		                	clearInterval(this.timer);
+		                	if(this.taskNews == window.taskCount) this.isOkTask = true;
 		                }
 		            }, 1000);
 	            } else {
-	            	this.clearTimer();
+	            	clearInterval(this.timer);
 	            }
 			}
         },
-        clearTimer() {
-        	clearInterval(this.timer);
-        }
+		watchTaskNews() {
+			if(this.words) {
+				if(!this.isOkTask) {
+	            	this.taskNewsTimer = setInterval(() => {
+		                this.taskNews = storage.getSession('taskNews') || 0;
+		            }, 100);
+	            } else {
+	            	clearInterval(this.taskNewsTimer);
+	            }
+			}
+		}
 	}
 };
 </script>

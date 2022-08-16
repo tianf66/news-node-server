@@ -96,10 +96,10 @@ export default {
 		        }
 		    });
 
-		    if(config.did == '1199626744223174656' || config.did == '1202163185784422400') {
+		    if(window.speechcraftContentFlat) {
 				let taskNews = storage.getSession('taskNews') || null;
                 let taskNewsNum = taskNews ? taskNews : 0;
-                if(taskNewsNum < 3) {
+                if(taskNewsNum < window.taskCount) {
                     storage.setSession('taskNews', taskNewsNum += 1);
                 }
 			}

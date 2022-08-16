@@ -79,10 +79,11 @@ let reptileDetail = function() {
         let data = res.data;
         // console.log("list请求成功！！",data);
         data.forEach((item) => {
-            let url = `https://n.opgirl.cn/api/news/getNewsById?did=1139493582617448448&newsId=${item.id}&channelId=1309314115054419968`;
+            let url = `https://n.opgirl.cn/api/news/getNewsById?did=1139493582617448448&newsId=${item.id}&channelId=1142047545493557248`;
             getPageUrl(url, (res) => {
-                console.log("detail请求成功！！！")
                 let data = res.data;
+
+                // console.log(data, "detail请求成功！！！")
                 //     time = data.createTime.split("-"),
                 //     replaceUrl = new RegExp(`https://gallery.opgirl.cn/news/${data.siteId}/${time[0]}/${time[1]}/${time[2].split(" ")[0]}/${data.id}`,"g");
                 // let resContent = data.content.replace(replaceUrl, "/static/images");

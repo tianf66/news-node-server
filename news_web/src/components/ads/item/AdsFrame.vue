@@ -130,7 +130,6 @@ export default {
                 adlayerProbability = slotInfo.adlayerProbabilitys.split(","),
                 slotIdIndex = slotInfo.id.split(",").indexOf(slotId.toString()),
                 probability = adlayerProbability[slotIdIndex];
-                console.log(probability)
             return parseInt(probability) || 0;
         },
         prohibitTime() {

@@ -121,7 +121,7 @@ function getQueryVariable(variable)  {
   return(false);
 }
 
-let did = getQueryVariable('did') || 2;
+let did = getQueryVariable('did') || 1;
 dataCenter.getAppMenuConfigList({did: did}).then((data) => {
   if(data) {
     // 获取频道及广告配置信息
