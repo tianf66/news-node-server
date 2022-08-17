@@ -50,7 +50,7 @@ export default {
 	},
 	data() {
 		return {
-			page: 1,
+			page: 0,
 			loading: true,
 			active: true,
 			showBottomAd: true,
@@ -62,7 +62,7 @@ export default {
 	watch: {
 		'$route': function(to, from) {
 		 	if(from.name == 'channel' && to.name == 'channel') {
-		 		this.page = 1;
+		 		this.page = 0;
 		 		this.showBottomAd = true;
 		 		this.listTopSlot = true;
 		 		this.$store.commit('CLEARLIST');

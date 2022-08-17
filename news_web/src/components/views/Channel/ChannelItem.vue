@@ -38,7 +38,7 @@ export default {
 	},
 	computed: {
 		did() {
-			return this.$route.query.did
+			return this.$route.query.did || 1
 		},
 		cid() {
 			return this.$route.params.cid;

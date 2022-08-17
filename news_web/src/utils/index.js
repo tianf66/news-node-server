@@ -263,14 +263,25 @@ let utils = {
         document.cookie = `news_uid=${uid}; path=/; expires=${date.toGMTString()}`;
         return uid;
     },
+    randomNum: function (Min, Max) {
+        var Range = Max - Min;
+        var Rand = Math.random();
+        if(Math.round(Rand * Range) == 0) {
+            return Min + 1;
+        } else if(Math.round(Rand * Max) == Max) {
+            return Max - 1;
+        } else {
+            var num = Min + Math.round(Rand * Range) - 1;
+            return num;
+        }
+    },
     randomString() {
         let $chars = '0123456789';
         let maxPos = $chars.length;
         let str = new String();
         for (let i = 0; i < 9; i++) {
             str += $chars.charAt(Math.floor(Math.random() * maxPos));
-    　　}
-
+    }
         return str;
     },
      formatMsgTime(timestamp) {

@@ -14,6 +14,10 @@ let count = navConfig.config.newsShowCount || 15;
 let store = {
     navConfig
 };
+let listPageRandomList = [1,2,3,4,5,6].sort(function () {
+    return Math.random() - 0.5
+  });
+
 /*   --const 2-- start */
 let constAdList = [
     {"clk_track":[],"height":6,"html":"<div class=\"_45uzsbmfp6i\"></div>\n    <script type=\"text/javascript\">\n        (window.slotbydup = window.slotbydup || []).push({\n            id: \"u6829847\",\n            container: \"_45uzsbmfp6i\",\n            async: true\n        });\n    </script>\n    <!-- 多条广告如下脚本只需引入一次 -->\n    <script type=\"text/javascript\" src=\"//cpro.baidustatic.com/cpro/ui/cm.js\" async=\"async\" defer=\"defer\" >\n    </script>","impr_track":[],"slot":6829847,"subtype":10,"type":10,"width":20},
@@ -88,7 +92,8 @@ store.getChannelList = (params) => {
         // start,
         count
     };
-    let url = urls.channleList;
+    let pageIndex = listPageRandomList[page] ? listPageRandomList[page] : 7;
+    let url = `/static/data/list${pageIndex}.json`;
     return new Promise((resolve, reject) => {
         axios({
             url: url,
@@ -105,8 +110,7 @@ store.getChannelList = (params) => {
                     })
                     item.imgList = list;
                 });
-                let dataList = data.slice(start, end);
-                resolve(dataList);
+                resolve(data);
             }
         }).catch((res) => {
             reject(res.status);
@@ -156,9 +160,11 @@ store.getDetail = (params) => {
 }
 
 store.getRelateNews = (params) => new Promise((resolve, reject) => {
+    let pageIndex = listPageRandomList[utils.randomNum(0,6)];
+    let relateNewsUrl = `/static/data/list${pageIndex}.json`;
     axios({
-        url: urls.relateNews,
-        timeout: 3000,
+        url: relateNewsUrl,
+        timeout: 5000,
         params: params
     }).then((response) => {
         let res = response.data;
@@ -172,7 +178,8 @@ store.getRelateNews = (params) => new Promise((resolve, reject) => {
                     })
                     item.imgList = list;
                 })
-                resolve(data);
+                let dataList = data.slice(0, 9);
+                resolve(dataList);
             } else {
                 reject();
             }

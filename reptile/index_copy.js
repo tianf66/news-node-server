@@ -32,7 +32,7 @@ let fs = require('fs');
 //   }
 // });
 
-
+// python -m SimpleHTTPServer
 /**爬取行为列表 */
 async function getPageUrl(url, callback) {
    let res = await axios.get(url, {strictSSL: false}).catch(function (error) { 
@@ -54,18 +54,56 @@ let getImgUrl = function(url, name) {
 }
 
 let reptileChannelList = function () {
-    let url = `http://localhost:8080/static/data/list.json`;
+    let url = `http://localhost:8000/list.json`;
     getPageUrl(url, function (data) {
         if(data.code === 1) {
             let item = data.data;
-            item.forEach((a, b) => {
-                let imgList = a.imgList;
-                let list = [];
-                imgList.forEach((imgItem) => {
-                    getImgUrl(imgItem, `${imgItem.split("/")[11]}`)
-                })
 
+            let list1 = [];
+            let list2 = [];
+            let list3 = [];
+            let list4 = [];
+            let list5 = [];
+            let list6 = [];
+
+            item.forEach((item, index) => {
+                if(index < 15) {
+                    list1.push(item);
+                }
+                if(index >= 15 && index < 30) {
+                    list2.push(item);
+                }
+                if(index >= 30 && index < 45) {
+                    list3.push(item);
+                }
+                if(index >= 45 && index < 60) {
+                    list4.push(item);
+                }
+                if(index >= 60 && index < 75) {
+                    list5.push(item);
+                }
+                if(index >= 75 && index < 100) {
+                    list6.push(item);
+                }
             });
+
+            setTimeout(() => {
+                console.log('list1 =====',list1);
+                console.log('list2 =====',list2);
+                console.log('list3 =====',list3);
+                console.log('list4 =====',list4);
+                console.log('list5 =====',list5);
+                console.log('list6 =====',list6);
+            }, 1000);
+            // item.forEach((a, b) => {
+            //     let imgList = a.imgList;
+            //     let list = [];
+            //     imgList.forEach((imgItem) => {
+            //         getImgUrl(imgItem, `${imgItem.split("/")[11]}`)
+            //     })
+
+            // });
+
         }
    });
 };
@@ -74,12 +112,12 @@ let reptileChannelList = function () {
 let reptileDetail = function() {
     
     let list = [];
-    let url = `http://localhost:8080/static/data/list.json`;
+    let url = `http://localhost:8000/list.json`;
     getPageUrl(url, (res) => {
         let data = res.data;
         // console.log("list请求成功！！",data);
         data.forEach((item) => {
-            let url = `https://n.opgirl.cn/api/news/getNewsById?did=1139493582617448448&newsId=${item.id}&channelId=1142047545493557248`;
+            let url = `https://n.opgirl.cn/api/news/getNewsById?did=1469226616981590016&newsId=${item.id}&channelId=1309313608714031104`;
             getPageUrl(url, (res) => {
                 let data = res.data;
 
@@ -88,23 +126,23 @@ let reptileDetail = function() {
                 //     replaceUrl = new RegExp(`https://gallery.opgirl.cn/news/${data.siteId}/${time[0]}/${time[1]}/${time[2].split(" ")[0]}/${data.id}`,"g");
                 // let resContent = data.content.replace(replaceUrl, "/static/images");
                 //     data.content = resContent;
-                // let imgList = data.imgList;
-                // imgList.forEach((imgItem) => {
-                //     let name = `/${imgItem.split("/")[11]}`;
-                //     getImgUrl(imgItem, name);
-                // });
-                let obj = {};
-                obj.id = data.id;
-                obj.title = data.title;
-                obj.content = data.content;
-                obj.author = data.author;
-                obj.createTime = data.createTime;
-                obj.siteType = data.siteType;
-                obj.lastId = data.lastId;
-                obj.nextId = data.nextId;
-                obj.channelId = data.channelId;
-                obj.siteId = data.siteId;
-                list.push(obj);
+                let imgList = data.imgList;
+                imgList.forEach((imgItem) => {
+                    let name = `/${imgItem.split("/")[11]}`;
+                    getImgUrl(imgItem, name);
+                });
+                // let obj = {};
+                // obj.id = data.id;
+                // obj.title = data.title;
+                // obj.content = data.content;
+                // obj.author = data.author;
+                // obj.createTime = data.createTime;
+                // obj.siteType = data.siteType;
+                // obj.lastId = data.lastId;
+                // obj.nextId = data.nextId;
+                // obj.channelId = data.channelId;
+                // obj.siteId = data.siteId;
+                // list.push(obj);
             });
         })
 
@@ -116,7 +154,7 @@ let reptileDetail = function() {
             //     }
             //     console.log("JSON data is saved.");
             // });
-            console.log('===', list, '===');
+            // console.log('===', list, '===');
         }, 10000);
     })
 
