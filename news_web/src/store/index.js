@@ -26,6 +26,15 @@ let constAdList = [
     {"clk_track":[],"height":6,"html":"<div class=\"_48uzsbmfp6i\"></div>\n    <script type=\"text/javascript\">\n        (window.slotbydup = window.slotbydup || []).push({\n            id: \"u6841398\",\n            container: \"_48uzsbmfp6i\",\n            async: true\n        });\n    </script>\n    <!-- 多条广告如下脚本只需引入一次 -->\n    <script type=\"text/javascript\" src=\"//cpro.baidustatic.com/cpro/ui/cm.js\" async=\"async\" defer=\"defer\" >\n    </script>","impr_track":[],"slot":6841398,"subtype":10,"type":10,"width":20},
 ]
 /*   --const 2-- end */
+
+/*   --const 3-- start */
+let constAdList3 = [
+    {"clk_track":[],"height":6,"html":"<div class=\"_45uzsbmfp6i\"></div>\n    <script type=\"text/javascript\">\n        (window.slotbydup = window.slotbydup || []).push({\n            id: \"u6841728\",\n            container: \"_45uzsbmfp6i\",\n            async: true\n        });\n    </script>\n    <!-- 多条广告如下脚本只需引入一次 -->\n    <script type=\"text/javascript\" src=\"//cpro.baidustatic.com/cpro/ui/cm.js\" async=\"async\" defer=\"defer\" >\n    </script>","impr_track":[],"slot":6841728,"subtype":10,"type":10,"width":20},
+    {"clk_track":[],"height":6,"html":"<div class=\"_46uzsbmfp6i\"></div>\n    <script type=\"text/javascript\">\n        (window.slotbydup = window.slotbydup || []).push({\n            id: \"u6841730\",\n            container: \"_46uzsbmfp6i\",\n            async: true\n        });\n    </script>\n    <!-- 多条广告如下脚本只需引入一次 -->\n    <script type=\"text/javascript\" src=\"//cpro.baidustatic.com/cpro/ui/cm.js\" async=\"async\" defer=\"defer\" >\n    </script>","impr_track":[],"slot":6841730,"subtype":10,"type":10,"width":20},
+    {"clk_track":[],"height":6,"html":"<div class=\"_47uzsbmfp6i\"></div>\n    <script type=\"text/javascript\">\n        (window.slotbydup = window.slotbydup || []).push({\n            id: \"u6841731\",\n            container: \"_47uzsbmfp6i\",\n            async: true\n        });\n    </script>\n    <!-- 多条广告如下脚本只需引入一次 -->\n    <script type=\"text/javascript\" src=\"//cpro.baidustatic.com/cpro/ui/cm.js\" async=\"async\" defer=\"defer\" >\n    </script>","impr_track":[],"slot":6841731,"subtype":10,"type":10,"width":20},
+    {"clk_track":[],"height":6,"html":"<div class=\"_48uzsbmfp6i\"></div>\n    <script type=\"text/javascript\">\n        (window.slotbydup = window.slotbydup || []).push({\n            id: \"u6841732\",\n            container: \"_48uzsbmfp6i\",\n            async: true\n        });\n    </script>\n    <!-- 多条广告如下脚本只需引入一次 -->\n    <script type=\"text/javascript\" src=\"//cpro.baidustatic.com/cpro/ui/cm.js\" async=\"async\" defer=\"defer\" >\n    </script>","impr_track":[],"slot":6841732,"subtype":10,"type":10,"width":20},
+]
+/*   --const 3-- end */
 /*
 	@param slot 广告ID
 */
@@ -54,6 +63,21 @@ let adFundamental = (slot, banned, adsType, clickCount, resolve, reject) => {
         return;
     }
     /*   --const 2-- end */
+
+    /*   --const 3-- start */
+    if(window.config.did == '3') {
+        if(banned) {
+            resolve(Object.assign({}, {}));
+        } else if(!banned) {
+            constAdList3.forEach((item, index) => {
+                if(item.slot === slot) {
+                    resolve(Object.assign({}, item));
+                }
+            });
+        }
+        return;
+    }
+    /*   --const 3-- end */
     
 };
 
