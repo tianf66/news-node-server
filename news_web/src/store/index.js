@@ -35,6 +35,13 @@ let constAdList3 = [
     {"clk_track":[],"height":6,"html":"<div class=\"_48uzsbmfp6i\"></div>\n    <script type=\"text/javascript\">\n        (window.slotbydup = window.slotbydup || []).push({\n            id: \"u6841732\",\n            container: \"_48uzsbmfp6i\",\n            async: true\n        });\n    </script>\n    <!-- 多条广告如下脚本只需引入一次 -->\n    <script type=\"text/javascript\" src=\"//cpro.baidustatic.com/cpro/ui/cm.js\" async=\"async\" defer=\"defer\" >\n    </script>","impr_track":[],"slot":6841732,"subtype":10,"type":10,"width":20},
 ]
 /*   --const 3-- end */
+
+/*   --const 4-- start */
+let constAdList4 = [
+    {"clk_track":[],"height":6,"html":"<div class=\"_45uzsbmfp6i\"></div>\n    <script type=\"text/javascript\">\n        (window.slotbydup = window.slotbydup || []).push({\n            id: \"u6842154\",\n            container: \"_45uzsbmfp6i\",\n            async: true\n        });\n    </script>\n    <!-- 多条广告如下脚本只需引入一次 -->\n    <script type=\"text/javascript\" src=\"//cpro.baidustatic.com/cpro/ui/cm.js\" async=\"async\" defer=\"defer\" >\n    </script>","impr_track":[],"slot":6842154,"subtype":10,"type":10,"width":20},
+    {"clk_track":[],"height":6,"html":"<div class=\"_46uzsbmfp6i\"></div>\n    <script type=\"text/javascript\">\n        (window.slotbydup = window.slotbydup || []).push({\n            id: \"u6842155\",\n            container: \"_46uzsbmfp6i\",\n            async: true\n        });\n    </script>\n    <!-- 多条广告如下脚本只需引入一次 -->\n    <script type=\"text/javascript\" src=\"//cpro.baidustatic.com/cpro/ui/cm.js\" async=\"async\" defer=\"defer\" >\n    </script>","impr_track":[],"slot":6842155,"subtype":10,"type":10,"width":20},
+]
+/*   --const 4-- end */
 /*
 	@param slot 广告ID
 */
@@ -78,6 +85,21 @@ let adFundamental = (slot, banned, adsType, clickCount, resolve, reject) => {
         return;
     }
     /*   --const 3-- end */
+
+    /*   --const 4-- start */
+    if(window.config.did == '4') {
+        if(banned) {
+            resolve(Object.assign({}, {}));
+        } else if(!banned) {
+            constAdList4.forEach((item, index) => {
+                if(item.slot === slot) {
+                    resolve(Object.assign({}, item));
+                }
+            });
+        }
+        return;
+    }
+    /*   --const 4-- end */
     
 };
 
@@ -270,7 +292,7 @@ store.getAppMenuConfigList = (param) => new Promise((resolve, reject) => {
             if(data[did]) {
                 resolve(data[did]);
             } else {
-                resolve(data[2]);
+                resolve(data[1]);
                 // location.href = `/?did=2`;
             }
          }
